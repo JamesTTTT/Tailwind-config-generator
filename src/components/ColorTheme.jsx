@@ -18,7 +18,10 @@ const ColorTheme = ({ setTheme, theme }) => {
   }, [colours]);
 
   const addColor = () => {
-    setColours([...colours, { color: "#ffffff", name: "Colour Name" }]);
+    setColours([
+      ...colours,
+      { color: "#ffffff", name: `ColorName${colours.length}` },
+    ]);
   };
 
   const deleteColour = (colour) => {
