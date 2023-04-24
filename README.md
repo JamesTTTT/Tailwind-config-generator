@@ -11,3 +11,6 @@ Tailwind Theme Builder is a user-interface webapp that enables you to create cus
 2. **The Rest of the Tailwind Syntax**: Support for the complete set of Tailwind CSS properties and values.
 3. **Auto Generation of Themes**: Generate multiple themes automatically based on your preferences.
 4. **Additional Settings for Config**: Access more granular control over your configuration with advanced settings.
+
+### Live Demo: 
+https://tailwind-theme-builder.netlify.app/
