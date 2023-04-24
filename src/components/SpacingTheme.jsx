@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { groupByParent } from "../util/util";
 const SpacingTheme = ({ setTheme }) => {
   const [spacing, setSpacing] = useState();
   const [spacingValues, setSpacingValues] = useState([]);
@@ -51,19 +51,6 @@ const SpacingTheme = ({ setTheme }) => {
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 
-  const groupByParent = (spacings) => {
-    const groupedSpacings = {};
-
-    spacings.forEach((spacing) => {
-      if (!groupedSpacings[spacing.parent]) {
-        groupedSpacings[spacing.parent] = [];
-      }
-      groupedSpacings[spacing.parent].push(spacing);
-    });
-
-    return groupedSpacings;
-  };
-
   const spacingMap = () => {
     const groupedSpacings = groupByParent(spacingValues);
 
@@ -76,7 +63,7 @@ const SpacingTheme = ({ setTheme }) => {
 
       return (
         <div key={parent}>
-          <h3 className="text-lg mt-2 underline">{parent}</h3>
+          <h3 className="text-xl mt-2">{parent}</h3>
           {spacings.map((spacing) => {
             const index = spacingValues.findIndex(
               (s) => s.name === spacing.name && s.parent === spacing.parent

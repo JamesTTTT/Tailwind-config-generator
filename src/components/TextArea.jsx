@@ -31,10 +31,10 @@ function TextArea({ theme }) {
         style={{ fontFamily: "monospace", whiteSpace: "pre-wrap" }}
       />
       <div className="flex mt-4">
-        <button className="bg-accent  text-neutral font-thin py-3 px-4 rounded-l-xl border-r border-neutral flex align-middle items-center">
+        <button className="bg-accent hover:bg-opacity-75  text-neutral font-thin py-3 px-4 rounded-l-xl border-r border-neutral flex align-middle items-center">
           Copy
         </button>
-        <button className="bg-accent  text-neutral font-thin py-3 px-4 rounded-r-xl flex align-middle items-center">
+        <button className="bg-accent hover:bg-opacity-75  text-neutral font-thin py-3 px-4 rounded-r-xl flex align-middle items-center">
           Export file
         </button>
       </div>

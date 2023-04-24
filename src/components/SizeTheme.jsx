@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { groupByParent } from "../util/util";
 
 const SizeTheme = ({ setTheme }) => {
   const [size, setSize] = useState();
@@ -50,19 +51,6 @@ const SizeTheme = ({ setTheme }) => {
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 
-  const groupByParent = (sizes) => {
-    const groupedSizes = {};
-
-    sizes.forEach((size) => {
-      if (!groupedSizes[size.parent]) {
-        groupedSizes[size.parent] = [];
-      }
-      groupedSizes[size.parent].push(size);
-    });
-
-    return groupedSizes;
-  };
-
   const sizeMap = () => {
     const groupedSizes = groupByParent(sizeValues);
 
@@ -75,7 +63,7 @@ const SizeTheme = ({ setTheme }) => {
 
       return (
         <div key={parent}>
-          <h3 className="text-lg mt-2 underline">{parent}</h3>
+          <h3 className="text-xl mt-2">{parent}</h3>
           {sizes.map((size) => {
             const index = sizeValues.findIndex(
               (s) => s.name === size.name && s.parent === size.parent

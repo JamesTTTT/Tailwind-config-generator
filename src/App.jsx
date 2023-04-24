@@ -5,6 +5,7 @@ import TextArea from "./components/TextArea";
 import SizeTheme from "./components/SizeTheme";
 import AddProp from "./components/AddProp";
 import SpacingTheme from "./components/SpacingTheme";
+import TypographyTheme from "./components/TypographyTheme";
 function App() {
   const [theme, setTheme] = useState({});
   const [selectedProps, setSelectedProps] = useState([
@@ -22,6 +23,11 @@ function App() {
       name: "Spacing",
       enabled: false,
       component: <SpacingTheme setTheme={setTheme} />,
+    },
+    {
+      name: "Typography",
+      enabled: false,
+      component: <TypographyTheme setTheme={setTheme} />,
     },
   ]);
 
@@ -41,16 +47,19 @@ function App() {
   return (
     <>
       <div className="p-5 min-h-screen w-full bg-base text-info">
-        <h1 className="text-4xl font-thin py-5">Tailwind Config Generator</h1>
-        <div className="flex justify-between">
-          <div className="h-fit">
+        <div className="flex justify-center">
+          <div className="h-fit w-2/5">
+            <h1 className="text-4xl font-thin py-5">
+              Tailwind Config Generator
+            </h1>
+            <p className="pb-4">Select a property to add</p>
             <AddProp
               selectedProps={selectedProps}
               setSelectedProps={setSelectedProps}
             />
             {mapComponents()}
           </div>
-          <div className="sticky">
+          <div className="sticky w-2/5">
             <TextArea theme={theme} />
           </div>
         </div>

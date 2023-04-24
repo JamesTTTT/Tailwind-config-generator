@@ -50,18 +50,20 @@ const ColorTheme = ({ setTheme }) => {
   const colorsMap = () => {
     return colors.map((color, index) => {
       return (
-        <div key={index} className="flex items-center my-4 px-2">
-          <ColorPicker
-            value={color.color}
-            onChange={(e) => {
-              const newColors = [...colors];
-              newColors[index].color = e.value;
-              setColors(newColors);
-            }}
-          />
+        <div key={index} className="flex items-center ">
+          <div className="bg-neutral h-14 py-1 px-4 rounded-l-xl flex items-center">
+            <ColorPicker
+              value={color.color}
+              onChange={(e) => {
+                const newColors = [...colors];
+                newColors[index].color = `#${e.value}`;
+                setColors(newColors);
+              }}
+            />
+          </div>
           <input
             value={color.name}
-            className="ml-4 bg-transparent text-info border-b border-accent w-40"
+            className=" text-info bg-neutral h-14 py-2 px-4 rounded-r-xl w-40"
             onChange={(e) => {
               const newColors = [...colors];
               newColors[index].name = e.target.value;
