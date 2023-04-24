@@ -49,9 +49,7 @@ function App() {
       <div className="p-5 min-h-screen w-full bg-base text-info">
         <div className="flex justify-center">
           <div className="h-fit w-2/5">
-            <h1 className="text-4xl font-thin py-5">
-              Tailwind Config Generator
-            </h1>
+            <h1 className="text-4xl font-thin py-5">Tailwind Theme Builder</h1>
             <p className="pb-4">Select a property to add</p>
             <AddProp
               selectedProps={selectedProps}

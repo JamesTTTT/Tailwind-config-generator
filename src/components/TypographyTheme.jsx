@@ -42,18 +42,20 @@ const TypographyComponent = ({ setTheme }) => {
   };
 
   const typographyPropList = [
-    "fontFamily",
     "fontSize",
     "fontWeight",
     "lineHeight",
     "letterSpacing",
-    "fontStyle",
   ];
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 
   const typographyMap = () => {
     const groupedProperties = groupByParent(propertyValues);
+
+    const hasFontProperties = (parent) => {
+      return ["fontSize", "lineHeight", "letterSpacing"].includes(parent);
+    };
 
     return typographyPropList.map((parent) => {
       const properties = groupedProperties[parent] || [];
@@ -85,7 +87,9 @@ const TypographyComponent = ({ setTheme }) => {
                   }}
                 />
                 <input
-                  className="text-info py-2 bg-neutral w-20 px-2 h-12 border-transparent focus:border-transparent focus:ring-0"
+                  className={`text-info py-2 bg-neutral w-20 px-2 h-12 border-transparent focus:border-transparent focus:ring-0 ${
+                    hasFontProperties(parent) ? "" : "rounded-r-xl w-52"
+                  }`}
                   value={property.value}
                   onChange={(e) => {
                     const newPropertyValues = [...propertyValues];
