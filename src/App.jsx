@@ -4,18 +4,24 @@ import ColorTheme from "./components/ColorTheme";
 import TextArea from "./components/TextArea";
 import SizeTheme from "./components/SizeTheme";
 import AddProp from "./components/AddProp";
+import SpacingTheme from "./components/SpacingTheme";
 function App() {
   const [theme, setTheme] = useState({});
   const [selectedProps, setSelectedProps] = useState([
     {
-      name: "colors",
+      name: "Colors",
       enabled: false,
-      component: <ColorTheme theme={theme} setTheme={setTheme} />,
+      component: <ColorTheme setTheme={setTheme} />,
     },
     {
-      name: "sizes",
+      name: "Sizes",
       enabled: false,
-      component: <SizeTheme theme={theme} setTheme={setTheme} />,
+      component: <SizeTheme setTheme={setTheme} />,
+    },
+    {
+      name: "Spacing",
+      enabled: false,
+      component: <SpacingTheme setTheme={setTheme} />,
     },
   ]);
 
@@ -23,7 +29,8 @@ function App() {
     return selectedProps.map((item) => {
       if (item.enabled) {
         return (
-          <div key={item.name} className="my-4">
+          <div key={item.name} className="my-10">
+            <h1 className="text-3xl">{item.name}</h1>
             {item.component}
           </div>
         );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const SizeTheme = ({ setTheme, theme }) => {
+const SizeTheme = ({ setTheme }) => {
   const [size, setSize] = useState();
   const [sizeValues, setSizeValues] = useState([]);
 
