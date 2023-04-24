@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { BsList } from "react-icons/bs";
+import { FaBoxes } from "react-icons/fa";
 
 function TextArea({ theme }) {
   const [configText, setConfigText] = useState("");
@@ -41,6 +43,46 @@ function TextArea({ theme }) {
 
   return (
     <div>
+      <div className="flex ml-6">
+        {/* <button className="mr-4 px-2 text-neutral h-fit rounded-full bg-primary">
+          <span>clear</span>
+        </button> */}
+        <div>
+          <input
+            type="radio"
+            name="select"
+            className="peer hidden"
+            id="select-radio-1"
+            onChange={() => {}}
+          />
+          <label
+            for="select-radio-1"
+            className="text-xl marker:text-info rounded-tl-xl
+                h-full py-2 px-4 flex flex-row bg-neutral items-center 
+                justify-center peer-checked:bg-slate-800"
+          >
+            <FaBoxes />
+          </label>
+        </div>
+
+        <div>
+          <input
+            type="radio"
+            name="select"
+            className="peer hidden"
+            id="select-radio-2"
+            onChange={() => {}}
+          />
+          <label
+            for="select-radio-2"
+            className="text-xl marker:text-info rounded-tr-xl
+                h-full py-2 px-4 flex flex-row bg-neutral items-center 
+                justify-center peer-checked:bg-slate-800"
+          >
+            <BsList />
+          </label>
+        </div>
+      </div>
       <textarea
         id="config-textarea"
         rows="30"

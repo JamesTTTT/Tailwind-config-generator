@@ -7,6 +7,7 @@ import AddProp from "./components/AddProp";
 import SpacingTheme from "./components/SpacingTheme";
 import TypographyTheme from "./components/TypographyTheme";
 import BorderTheme from "./components/BorderTheme";
+import EffectsTheme from "./components/EffectsTheme";
 import { SiTailwindcss } from "react-icons/si";
 function App() {
   const [theme, setTheme] = useState({});
@@ -35,6 +36,11 @@ function App() {
       name: "Border",
       enabled: false,
       component: <BorderTheme setTheme={setTheme} />,
+    },
+    {
+      name: "Effects",
+      enabled: false,
+      component: <EffectsTheme setTheme={setTheme} />,
     },
   ]);
 
