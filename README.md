@@ -1,5 +1,5 @@
 # Tailwind Theme Builder
-##WORK IN PROGRESS
+## WORK IN PROGRESS
 
 Tailwind Theme Builder is a user-interface webapp that enables you to create custom Tailwind CSS theme configurations effortlessly. With its intuitive UI, you can easily adjust settings like colors, typography, and sizes to suit your project's needs. Export your custom configuration and integrate it into your Tailwind CSS project.
 
