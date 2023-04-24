@@ -4,6 +4,7 @@ import { ColorPicker } from "primereact/colorpicker";
 
 const ColorTheme = ({ setTheme, theme }) => {
   const [colours, setColours] = useState([]);
+  // const [colorType, setColorType] = useState("color");
 
   useEffect(() => {
     const colors = colours.reduce((acc, item) => {
@@ -11,10 +12,10 @@ const ColorTheme = ({ setTheme, theme }) => {
       return acc;
     }, {});
 
-    setTheme({
-      ...theme,
+    setTheme((prevTheme) => ({
+      ...prevTheme,
       colors: colors,
-    });
+    }));
   }, [colours]);
 
   const addColor = () => {

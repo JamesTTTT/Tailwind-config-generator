@@ -12,7 +12,11 @@ function App() {
       enabled: false,
       component: <ColorTheme theme={theme} setTheme={setTheme} />,
     },
-    { name: "sizes", enabled: false, component: <SizeTheme /> },
+    {
+      name: "sizes",
+      enabled: false,
+      component: <SizeTheme theme={theme} setTheme={setTheme} />,
+    },
   ]);
 
   const mapComponents = () => {

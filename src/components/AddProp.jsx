@@ -18,7 +18,7 @@ const AddProp = ({ selectedProps, setSelectedProps }) => {
 
   return (
     <div className="flex items-center">
-      <div className="card flex justify-content-center">
+      <div className="card flex justify-center">
         <select
           value={selectedProp?.name}
           onChange={(e) => {
