@@ -50,7 +50,7 @@ const ColorTheme = ({ setTheme }) => {
   const colorsMap = () => {
     return colors.map((color, index) => {
       return (
-        <div key={index} className="flex items-center ">
+        <div key={index} className="flex items-center mb-2">
           <div className="bg-neutral h-14 py-1 px-4 rounded-l-xl flex items-center">
             <ColorPicker
               value={color.color}
