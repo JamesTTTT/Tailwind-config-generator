@@ -6,6 +6,8 @@ import SizeTheme from "./components/SizeTheme";
 import AddProp from "./components/AddProp";
 import SpacingTheme from "./components/SpacingTheme";
 import TypographyTheme from "./components/TypographyTheme";
+import BorderTheme from "./components/BorderTheme";
+import { SiTailwindcss } from "react-icons/si";
 function App() {
   const [theme, setTheme] = useState({});
   const [selectedProps, setSelectedProps] = useState([
@@ -29,6 +31,11 @@ function App() {
       enabled: false,
       component: <TypographyTheme setTheme={setTheme} />,
     },
+    {
+      name: "Border",
+      enabled: false,
+      component: <BorderTheme setTheme={setTheme} />,
+    },
   ]);
 
   const mapComponents = () => {
@@ -49,7 +56,9 @@ function App() {
       <div className="p-5 min-h-screen w-full bg-base text-info">
         <div className="flex justify-center">
           <div className="h-fit w-2/5">
-            <h1 className="text-4xl font-thin py-5">Tailwind Theme Builder</h1>
+            <h1 className="text-4xl font-thin py-5 flex items-center">
+              Tailwind Theme Builder <SiTailwindcss />
+            </h1>
             <p className="pb-4">Select a property to add</p>
             <AddProp
               selectedProps={selectedProps}

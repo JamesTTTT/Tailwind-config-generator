@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
-
+import DropDown from "./util/DropDown";
 const TypographyComponent = ({ setTheme }) => {
   const [property, setProperty] = useState();
   const [propertyValues, setPropertyValues] = useState([]);
@@ -100,22 +100,17 @@ const TypographyComponent = ({ setTheme }) => {
                 {["fontSize", "lineHeight", "letterSpacing"].includes(
                   parent
                 ) && (
-                  <select
+                  <DropDown
                     value={property.unit}
+                    orientation={"left"}
+                    h={"h-12"}
                     onChange={(e) => {
                       const newPropertyValues = [...propertyValues];
                       newPropertyValues[index].unit = e.target.value;
                       setPropertyValues(newPropertyValues);
                     }}
-                    className="bg-neutral py-2 px-1 text-lg w-fit h-12 rounded-r-xl"
-                  >
-                    <option>Select a unit</option>
-                    {unitList.map((unit) => (
-                      <option key={unit} value={unit}>
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
+                    content={unitList}
+                  />
                 )}
                 <button onClick={() => deleteProperty(property)}>
                   <i className="pi pi-times py-2 h-12 px-4 text-lg rounded-r-xl transition-colors" />
@@ -132,12 +127,12 @@ const TypographyComponent = ({ setTheme }) => {
     <div className="w-full">
       <h1 className="mb-3">Customize Typography</h1>
       <div className="flex w-full">
-        <select
+        <DropDown
           value={property}
           onChange={(e) => {
             setProperty(e.target.value);
           }}
-          className="bg-neutral py-2 px-4 text-lg rounded-l w-48 h-fit"
+          content={typographyPropList}
         >
           <option>Select a property</option>
           {typographyPropList.map((prop) => (
@@ -145,7 +140,7 @@ const TypographyComponent = ({ setTheme }) => {
               {prop}
             </option>
           ))}
-        </select>
+        </DropDown>
         <button
           onClick={addProperty}
           className="bg-accent text-neutral font-thin py-2 px-4 rounded-r flex items-center"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "primeicons/primeicons.css";
 import { ColorPicker } from "primereact/colorpicker";
+import DropDown from "./util/DropDown";
 
 const ColorTheme = ({ setTheme }) => {
   const [colors, setColors] = useState([]);
@@ -82,20 +83,13 @@ const ColorTheme = ({ setTheme }) => {
     <div>
       <h1 className="mb-3">Create a custom color theme</h1>
       <div className="flex w-full">
-        <select
+        <DropDown
           value={colorType}
           onChange={(e) => {
             setColorType(e.target.value);
           }}
-          className="bg-neutral py-2 px-4 text-lg rounded-l w-48 h-fit"
-        >
-          <option>Select a property</option>
-          {colorPropList.map((prop) => (
-            <option key={prop} value={prop}>
-              {prop}
-            </option>
-          ))}
-        </select>
+          content={colorPropList}
+        />
         <button
           onClick={addColor}
           className="bg-accent text-neutral font-thin py-2 px-4 rounded-r flex items-center"

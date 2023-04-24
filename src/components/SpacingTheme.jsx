@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
+import DropDown from "./util/DropDown";
 const SpacingTheme = ({ setTheme }) => {
   const [spacing, setSpacing] = useState();
   const [spacingValues, setSpacingValues] = useState([]);
@@ -85,7 +86,7 @@ const SpacingTheme = ({ setTheme }) => {
                   }}
                 />
                 <input
-                  className=" text-info py-2 bg-neutral w-20 px-2 h-12
+                  className=" text-info py-2 bg-neutral w-20 px-2 h-12 text-lg
 				  border-transparent focus:border-transparent focus:ring-0"
                   value={spacing.value}
                   onChange={(e) => {
@@ -94,22 +95,17 @@ const SpacingTheme = ({ setTheme }) => {
                     setSpacingValues(newSpacingValues);
                   }}
                 />
-                <select
+                <DropDown
                   value={spacing.unit}
+                  orientation={"left"}
+                  h="h-12"
                   onChange={(e) => {
                     const newSpacingValues = [...spacingValues];
                     newSpacingValues[index].unit = e.target.value;
                     setSpacingValues(newSpacingValues);
                   }}
-                  className="bg-neutral py-2 px-1 text-lg w-fit h-12 rounded-r-xl"
-                >
-                  <option>Select a unit</option>
-                  {unitList.map((unit) => (
-                    <option key={unit} value={unit}>
-                      {unit}
-                    </option>
-                  ))}
-                </select>
+                  content={unitList}
+                />
                 <button onClick={() => deleteSpacing(spacing)}>
                   <i className="pi pi-times py-2 h-12 px-4 text-lg rounded-r-xl  transition-colors" />
                 </button>
@@ -125,20 +121,14 @@ const SpacingTheme = ({ setTheme }) => {
     <div className=" w-full">
       <h1 className="mb-3">Create custom spacings</h1>
       <div className="flex w-full ">
-        <select
+        <DropDown
+          orientation="right"
           value={spacing}
           onChange={(e) => {
             setSpacing(e.target.value);
           }}
-          className="bg-neutral py-2 px-4 text-lg rounded-l w-48 h-fit"
-        >
-          <option>Select a property</option>
-          {spacingPropList.map((prop) => (
-            <option key={prop} value={prop}>
-              {prop}
-            </option>
-          ))}
-        </select>
+          content={spacingPropList}
+        />
         <button
           onClick={addSpacings}
           className="bg-accent text-neutral font-thin py-2 px-4 rounded-r flex items-center"

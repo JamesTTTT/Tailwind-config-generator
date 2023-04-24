@@ -27,7 +27,7 @@ const AddProp = ({ selectedProps, setSelectedProps }) => {
             );
             setSelectedProp(prop);
           }}
-          className="bg-neutral py-2 px-4 text-lg rounded-l w-full"
+          className="bg-neutral py-2 px-4 text-lg rounded-l-xl w-full"
         >
           <option>Select a property</option>
           {selectedProps
