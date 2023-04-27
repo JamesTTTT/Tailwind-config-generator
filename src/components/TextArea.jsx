@@ -58,8 +58,8 @@ function TextArea({ theme }) {
           <label
             for="select-radio-1"
             className="text-xl marker:text-info rounded-tl-xl
-                h-full py-2 px-4 flex flex-row bg-neutral items-center 
-                justify-center peer-checked:bg-slate-800"
+                h-full py-2 px-4 flex flex-row items-center 
+                justify-center peer-checked:bg-neutral bg-slate-800"
           >
             <FaBoxes />
           </label>
@@ -71,13 +71,15 @@ function TextArea({ theme }) {
             name="select"
             className="peer hidden"
             id="select-radio-2"
-            onChange={() => {}}
+            onChange={(e) => {
+              console.log(e.target.value);
+            }}
           />
           <label
             for="select-radio-2"
             className="text-xl marker:text-info rounded-tr-xl
-                h-full py-2 px-4 flex flex-row bg-neutral items-center 
-                justify-center peer-checked:bg-slate-800"
+                h-full py-2 px-4 flex flex-row items-center 
+                justify-center peer-checked:bg-neutral bg-slate-800"
           >
             <BsList />
           </label>

@@ -8,6 +8,7 @@ import SpacingTheme from "./components/SpacingTheme";
 import TypographyTheme from "./components/TypographyTheme";
 import BorderTheme from "./components/BorderTheme";
 import EffectsTheme from "./components/EffectsTheme";
+import FlexGridTheme from "./components/FlexGridTheme";
 import { SiTailwindcss } from "react-icons/si";
 function App() {
   const [theme, setTheme] = useState({});
@@ -41,6 +42,11 @@ function App() {
       name: "Effects",
       enabled: false,
       component: <EffectsTheme setTheme={setTheme} />,
+    },
+    {
+      name: "Flex & Grid",
+      enabled: false,
+      component: <FlexGridTheme setTheme={setTheme} />,
     },
   ]);
 
