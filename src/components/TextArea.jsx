@@ -4,16 +4,29 @@ import { FaBoxes } from "react-icons/fa";
 
 function TextArea({ theme }) {
   const [configText, setConfigText] = useState("");
+  const [isExtend, setIsExtend] = useState(false);
 
   useEffect(() => {
     const generateConfig = () => {
-      const config = {
+      let config = {
         theme: {
           ...theme,
         },
         variants: {},
         plugins: [],
       };
+      if (isExtend) {
+        config = {
+          theme: {
+            extend: {
+              ...theme,
+            },
+          },
+          variants: {},
+          plugins: [],
+        };
+      }
+
       return `/** @type {import('tailwindcss').Config} */\nexport default ${JSON.stringify(
         config,
         null,
@@ -24,7 +37,7 @@ function TextArea({ theme }) {
     if (theme) {
       setConfigText(generateConfig());
     }
-  }, [theme]);
+  }, [theme, isExtend]);
 
   const handleExport = () => {
     const configData = new Blob([configText], { type: "text/plain" });
@@ -43,45 +56,65 @@ function TextArea({ theme }) {
 
   return (
     <div>
-      <div className="flex ml-6">
+      <div className="flex justify-between ml-6 w-80">
         {/* <button className="mr-4 px-2 text-neutral h-fit rounded-full bg-primary">
           <span>clear</span>
         </button> */}
-        <div>
-          <input
-            type="radio"
-            name="select"
-            className="peer hidden"
-            id="select-radio-1"
-            onChange={() => {}}
-          />
-          <label
-            for="select-radio-1"
-            className="text-xl marker:text-info rounded-tl-xl
-                h-full py-2 px-4 flex flex-row items-center 
-                justify-center peer-checked:bg-neutral bg-slate-800"
-          >
-            <FaBoxes />
-          </label>
-        </div>
 
-        <div>
-          <input
-            type="radio"
-            name="select"
-            className="peer hidden"
-            id="select-radio-2"
-            onChange={(e) => {
-              console.log(e.target.value);
-            }}
-          />
-          <label
-            for="select-radio-2"
-            className="text-xl marker:text-info rounded-tr-xl
+        <div className="flex">
+          <div>
+            <input
+              type="radio"
+              name="select"
+              className="peer hidden"
+              id="select-radio-1"
+              onChange={() => {}}
+            />
+            <label
+              for="select-radio-1"
+              className="text-xl marker:text-info rounded-tl-xl
                 h-full py-2 px-4 flex flex-row items-center 
                 justify-center peer-checked:bg-neutral bg-slate-800"
-          >
-            <BsList />
+            >
+              <FaBoxes />
+            </label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              name="select"
+              className="peer hidden"
+              id="select-radio-2"
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+            />
+            <label
+              for="select-radio-2"
+              className="text-xl marker:text-info rounded-tr-xl
+                h-full py-2 px-4 flex flex-row items-center 
+                justify-center peer-checked:bg-neutral bg-slate-800"
+            >
+              <BsList />
+            </label>
+          </div>
+        </div>
+        <div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              value=""
+              class="sr-only peer"
+              onChange={(e) => {
+                setIsExtend(e.target.checked);
+                console.log(e.target.checked);
+              }}
+            />
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-neutral peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent"></div>
+            <span class="mx-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              Extend Mode
+            </span>
           </label>
         </div>
       </div>

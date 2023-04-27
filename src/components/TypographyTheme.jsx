@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
 import DropDown from "./util/DropDown";
+const typographyPropList = [
+  "fontSize",
+  "fontWeight",
+  "lineHeight",
+  "letterSpacing",
+];
 const TypographyComponent = ({ setTheme }) => {
-  const [property, setProperty] = useState();
+  const [property, setProperty] = useState(typographyPropList[0]);
   const [propertyValues, setPropertyValues] = useState([]);
 
   useEffect(() => {
@@ -40,13 +46,6 @@ const TypographyComponent = ({ setTheme }) => {
   const deleteProperty = (property) => {
     setPropertyValues(propertyValues.filter((p) => p !== property));
   };
-
-  const typographyPropList = [
-    "fontSize",
-    "fontWeight",
-    "lineHeight",
-    "letterSpacing",
-  ];
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 
