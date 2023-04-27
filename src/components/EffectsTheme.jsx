@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
 import DropDown from "./util/DropDown";
 
+const effectPropList = [
+  "boxShadow",
+  "opacity",
+  "backgroundBlendMode",
+  "mixBlendMode",
+];
+
 const EffectsTheme = ({ setTheme }) => {
-  const [effectProp, setEffectProp] = useState();
+  const [effectProp, setEffectProp] = useState(effectPropList[0]);
   const [effectValues, setEffectValues] = useState([]);
 
   useEffect(() => {
@@ -38,13 +45,6 @@ const EffectsTheme = ({ setTheme }) => {
   const deleteEffect = (effect) => {
     setEffectValues(effectValues.filter((e) => e !== effect));
   };
-
-  const effectPropList = [
-    "boxShadow",
-    "opacity",
-    "backgroundBlendMode",
-    "mixBlendMode",
-  ];
 
   const effectMap = () => {
     const groupedEffects = groupByParent(effectValues);

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
 import DropDown from "./util/DropDown";
-
+const borderPropList = [
+  "borderWidth",
+  "borderColor",
+  "borderRadius",
+  "borderStyle",
+  "ringWidth",
+];
 const BorderTheme = ({ setTheme }) => {
-  const [borderProp, setBorderProp] = useState();
+  const [borderProp, setBorderProp] = useState(borderPropList[0]);
   const [borderValues, setBorderValues] = useState([]);
 
   useEffect(() => {
@@ -39,14 +45,6 @@ const BorderTheme = ({ setTheme }) => {
   const deleteBorder = (border) => {
     setBorderValues(borderValues.filter((b) => b !== border));
   };
-
-  const borderPropList = [
-    "borderWidth",
-    "borderColor",
-    "borderRadius",
-    "borderStyle",
-    "ringWidth",
-  ];
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
   const borderMap = () => {

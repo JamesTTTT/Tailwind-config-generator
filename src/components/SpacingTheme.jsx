@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
 import DropDown from "./util/DropDown";
+const spacingPropList = [
+  "spacing",
+  "margin",
+  "padding",
+  "space",
+  "gap",
+  "inset",
+  "translateY",
+  "translateX",
+];
 const SpacingTheme = ({ setTheme }) => {
-  const [spacing, setSpacing] = useState();
+  const [spacing, setSpacing] = useState(spacingPropList[0]);
   const [spacingValues, setSpacingValues] = useState([]);
 
   useEffect(() => {
@@ -38,17 +48,6 @@ const SpacingTheme = ({ setTheme }) => {
   const deleteSpacing = (spacing) => {
     setSpacingValues(spacingValues.filter((s) => s !== spacing));
   };
-
-  const spacingPropList = [
-    "spacing",
-    "margin",
-    "padding",
-    "space",
-    "gap",
-    "inset",
-    "translateY",
-    "translateX",
-  ];
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 

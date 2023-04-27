@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { groupByParent } from "../util/util";
 import DropDown from "./util/DropDown";
+const sizePropList = [
+  "width",
+  "minWidth",
+  "maxWidth",
+  "height",
+  "minHeight",
+  "maxHeight",
+  "container",
+];
 
 const SizeTheme = ({ setTheme }) => {
-  const [size, setSize] = useState();
+  const [size, setSize] = useState(sizePropList[0]);
   const [sizeValues, setSizeValues] = useState([]);
 
   useEffect(() => {
@@ -39,16 +48,6 @@ const SizeTheme = ({ setTheme }) => {
   const deleteSize = (size) => {
     setSizeValues(sizeValues.filter((s) => s !== size));
   };
-
-  const sizePropList = [
-    "width",
-    "minWidth",
-    "maxWidth",
-    "height",
-    "minHeight",
-    "maxHeight",
-    "container",
-  ];
 
   const unitList = ["px", "rem", "em", "vh", "vw", "%"];
 
@@ -97,6 +96,8 @@ const SizeTheme = ({ setTheme }) => {
                 />
                 <DropDown
                   value={size.unit}
+                  orientation={"left"}
+                  h={"h-12"}
                   onChange={(e) => {
                     const newSizeValues = [...sizeValues];
                     newSizeValues[index].unit = e.target.value;
