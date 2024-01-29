@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import ColorTheme from "./components/ColorTheme";
 import TextArea from "./components/TextArea";
 import SizeTheme from "./components/SizeTheme";
@@ -10,6 +9,7 @@ import BorderTheme from "./components/BorderTheme";
 import EffectsTheme from "./components/EffectsTheme";
 import FlexGridTheme from "./components/FlexGridTheme";
 import { SiTailwindcss } from "react-icons/si";
+import { removePropertiesFromTheme } from "./util/util";
 function App() {
   const [theme, setTheme] = useState({});
   const [selectedProps, setSelectedProps] = useState([
@@ -55,7 +55,30 @@ function App() {
       if (item.enabled) {
         return (
           <div key={item.name} className="my-10">
-            <h1 className="text-3xl">{item.name}</h1>
+            <div className="flex flex-row items-center">
+              <h1 className="text-3xl">{item.name}</h1>{" "}
+              <button
+                className="mx-4 text-3xl"
+                onClick={() => {
+                  const updatedTheme = removePropertiesFromTheme(
+                    item.name,
+                    theme
+                  );
+                  setTheme(updatedTheme);
+                  setSelectedProps(
+                    selectedProps.map((prop) => {
+                      if (prop.name === item.name) {
+                        return { ...prop, enabled: false };
+                      } else {
+                        return prop;
+                      }
+                    })
+                  );
+                }}
+              >
+                <i className="pi pi-times py-2 h-12 px-4 text-lg rounded-r-xl  transition-colors" />
+              </button>
+            </div>
             {item.component}
           </div>
         );
