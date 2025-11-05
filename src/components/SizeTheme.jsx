@@ -27,11 +27,19 @@ const SizeTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...sizes,
-    }));
-  }, [sizeValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old size properties that no longer have values
+      sizePropList.forEach(prop => {
+        if (sizes[prop] && Object.keys(sizes[prop]).length > 0) {
+          newTheme[prop] = sizes[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [sizeValues, setTheme]);
 
   const addSizes = () => {
     setSizeValues([

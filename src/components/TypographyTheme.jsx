@@ -25,11 +25,19 @@ const TypographyComponent = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...properties,
-    }));
-  }, [propertyValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old typography properties that no longer have values
+      typographyPropList.forEach(prop => {
+        if (properties[prop] && Object.keys(properties[prop]).length > 0) {
+          newTheme[prop] = properties[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [propertyValues, setTheme]);
 
   const addProperty = () => {
     setPropertyValues([

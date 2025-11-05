@@ -6,7 +6,6 @@ const spacingPropList = [
   "margin",
   "padding",
   "space",
-  "gap",
   "inset",
   "translateY",
   "translateX",
@@ -27,11 +26,19 @@ const SpacingTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...spacings,
-    }));
-  }, [spacingValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old spacing properties that no longer have values
+      spacingPropList.forEach(prop => {
+        if (spacings[prop] && Object.keys(spacings[prop]).length > 0) {
+          newTheme[prop] = spacings[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [spacingValues, setTheme]);
 
   const addSpacings = () => {
     setSpacingValues([

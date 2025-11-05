@@ -24,11 +24,19 @@ const BorderTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...borders,
-    }));
-  }, [borderValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old border properties that no longer have values
+      borderPropList.forEach(prop => {
+        if (borders[prop] && Object.keys(borders[prop]).length > 0) {
+          newTheme[prop] = borders[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [borderValues, setTheme]);
 
   const addBorder = () => {
     setBorderValues([

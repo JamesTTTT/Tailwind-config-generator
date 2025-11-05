@@ -36,11 +36,19 @@ const FlexGridTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...flexGrid,
-    }));
-  }, [flexGridValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old flex/grid properties that no longer have values
+      flexGridPropList.forEach(prop => {
+        if (flexGrid[prop] && Object.keys(flexGrid[prop]).length > 0) {
+          newTheme[prop] = flexGrid[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [flexGridValues, setTheme]);
 
   const addFlexGrid = () => {
     setFlexGridValues([

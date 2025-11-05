@@ -16,43 +16,55 @@ function App() {
     {
       name: "Colors",
       enabled: false,
-      component: <ColorTheme setTheme={setTheme} />,
+      componentType: "ColorTheme",
     },
     {
       name: "Sizes",
       enabled: false,
-      component: <SizeTheme setTheme={setTheme} />,
+      componentType: "SizeTheme",
     },
     {
       name: "Spacing",
       enabled: false,
-      component: <SpacingTheme setTheme={setTheme} />,
+      componentType: "SpacingTheme",
     },
     {
       name: "Typography",
       enabled: false,
-      component: <TypographyTheme setTheme={setTheme} />,
+      componentType: "TypographyTheme",
     },
     {
       name: "Border",
       enabled: false,
-      component: <BorderTheme setTheme={setTheme} />,
+      componentType: "BorderTheme",
     },
     {
       name: "Effects",
       enabled: false,
-      component: <EffectsTheme setTheme={setTheme} />,
+      componentType: "EffectsTheme",
     },
     {
       name: "Flex & Grid",
       enabled: false,
-      component: <FlexGridTheme setTheme={setTheme} />,
+      componentType: "FlexGridTheme",
     },
   ]);
+
+  // Component mapping for dynamic rendering
+  const componentMap = {
+    ColorTheme: ColorTheme,
+    SizeTheme: SizeTheme,
+    SpacingTheme: SpacingTheme,
+    TypographyTheme: TypographyTheme,
+    BorderTheme: BorderTheme,
+    EffectsTheme: EffectsTheme,
+    FlexGridTheme: FlexGridTheme,
+  };
 
   const mapComponents = () => {
     return selectedProps.map((item) => {
       if (item.enabled) {
+        const Component = componentMap[item.componentType];
         return (
           <div key={item.name} className="my-10">
             <div className="flex flex-row items-center">
@@ -79,7 +91,7 @@ function App() {
                 <i className="pi pi-times py-2 h-12 px-4 text-lg rounded-r-xl  transition-colors" />
               </button>
             </div>
-            {item.component}
+            <Component setTheme={setTheme} theme={theme} />
           </div>
         );
       }

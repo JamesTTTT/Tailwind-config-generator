@@ -33,7 +33,6 @@ export const removePropertiesFromTheme = (componentName, theme) => {
       delete newTheme.margin;
       delete newTheme.padding;
       delete newTheme.space;
-      delete newTheme.gap;
       delete newTheme.inset;
       delete newTheme.translateY;
       delete newTheme.translateX;

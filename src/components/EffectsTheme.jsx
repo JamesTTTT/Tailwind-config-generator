@@ -25,11 +25,19 @@ const EffectsTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      ...effects,
-    }));
-  }, [effectValues]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      // Remove old effect properties that no longer have values
+      effectPropList.forEach(prop => {
+        if (effects[prop] && Object.keys(effects[prop]).length > 0) {
+          newTheme[prop] = effects[prop];
+        } else {
+          delete newTheme[prop];
+        }
+      });
+      return newTheme;
+    });
+  }, [effectValues, setTheme]);
 
   const addEffect = () => {
     setEffectValues([

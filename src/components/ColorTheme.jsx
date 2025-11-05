@@ -31,11 +31,16 @@ const ColorTheme = ({ setTheme }) => {
       return acc;
     }, {});
 
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      colors: colorMap,
-    }));
-  }, [colors]);
+    setTheme((prevTheme) => {
+      const newTheme = { ...prevTheme };
+      if (Object.keys(colorMap).length > 0) {
+        newTheme.colors = colorMap;
+      } else {
+        delete newTheme.colors;
+      }
+      return newTheme;
+    });
+  }, [colors, setTheme]);
 
   const addColor = () => {
     setColors([
