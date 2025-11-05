@@ -66,18 +66,86 @@ export const removePropertiesFromTheme = (componentName, theme) => {
       delete newTheme.order;
       delete newTheme.gridColumn;
       delete newTheme.gridColumnStart;
-
       delete newTheme.gridColumnEnd;
       delete newTheme.gridRow;
       delete newTheme.gridRowStart;
       delete newTheme.gridRowEnd;
       delete newTheme.gridAutoFlow;
-
       delete newTheme.gridAutoColumns;
       delete newTheme.gridAutoRows;
       delete newTheme.gridTemplateColumns;
       delete newTheme.gridTemplateRows;
       delete newTheme.gap;
+      break;
+
+    case "Filters":
+      delete newTheme.blur;
+      delete newTheme.brightness;
+      delete newTheme.contrast;
+      delete newTheme.dropShadow;
+      delete newTheme.grayscale;
+      delete newTheme.hueRotate;
+      delete newTheme.invert;
+      delete newTheme.saturate;
+      delete newTheme.sepia;
+      break;
+
+    case "Backdrop Filters":
+      delete newTheme.backdropBlur;
+      delete newTheme.backdropBrightness;
+      delete newTheme.backdropContrast;
+      delete newTheme.backdropGrayscale;
+      delete newTheme.backdropHueRotate;
+      delete newTheme.backdropInvert;
+      delete newTheme.backdropOpacity;
+      delete newTheme.backdropSaturate;
+      delete newTheme.backdropSepia;
+      break;
+
+    case "Transitions":
+      delete newTheme.transitionProperty;
+      delete newTheme.transitionDuration;
+      delete newTheme.transitionTimingFunction;
+      delete newTheme.transitionDelay;
+      break;
+
+    case "Transforms":
+      delete newTheme.scale;
+      delete newTheme.rotate;
+      delete newTheme.skew;
+      break;
+
+    case "Animations":
+      delete newTheme.animation;
+      delete newTheme.keyframes;
+      break;
+
+    case "Other Utilities":
+      delete newTheme.zIndex;
+      delete newTheme.aspectRatio;
+      delete newTheme.columns;
+      delete newTheme.cursor;
+      delete newTheme.accentColor;
+      delete newTheme.caretColor;
+      delete newTheme.scrollMargin;
+      delete newTheme.scrollPadding;
+      delete newTheme.fill;
+      delete newTheme.stroke;
+      delete newTheme.strokeWidth;
+      delete newTheme.textIndent;
+      delete newTheme.textDecorationColor;
+      delete newTheme.textDecorationThickness;
+      delete newTheme.textUnderlineOffset;
+      delete newTheme.textShadow;
+      delete newTheme.outlineWidth;
+      delete newTheme.outlineColor;
+      delete newTheme.outlineOffset;
+      delete newTheme.outlineStyle;
+      delete newTheme.fontFamily;
+      delete newTheme.backgroundImage;
+      delete newTheme.backgroundSize;
+      delete newTheme.backgroundPosition;
+      delete newTheme.screens;
       break;
   }
 

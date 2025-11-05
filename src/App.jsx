@@ -8,6 +8,12 @@ import TypographyTheme from "./components/TypographyTheme";
 import BorderTheme from "./components/BorderTheme";
 import EffectsTheme from "./components/EffectsTheme";
 import FlexGridTheme from "./components/FlexGridTheme";
+import FiltersTheme from "./components/FiltersTheme";
+import BackdropFiltersTheme from "./components/BackdropFiltersTheme";
+import TransitionsTheme from "./components/TransitionsTheme";
+import TransformsTheme from "./components/TransformsTheme";
+import AnimationsTheme from "./components/AnimationsTheme";
+import OtherUtilitiesTheme from "./components/OtherUtilitiesTheme";
 import { SiTailwindcss } from "react-icons/si";
 import { removePropertiesFromTheme } from "./util/util";
 function App() {
@@ -48,6 +54,36 @@ function App() {
       enabled: false,
       componentType: "FlexGridTheme",
     },
+    {
+      name: "Filters",
+      enabled: false,
+      componentType: "FiltersTheme",
+    },
+    {
+      name: "Backdrop Filters",
+      enabled: false,
+      componentType: "BackdropFiltersTheme",
+    },
+    {
+      name: "Transitions",
+      enabled: false,
+      componentType: "TransitionsTheme",
+    },
+    {
+      name: "Transforms",
+      enabled: false,
+      componentType: "TransformsTheme",
+    },
+    {
+      name: "Animations",
+      enabled: false,
+      componentType: "AnimationsTheme",
+    },
+    {
+      name: "Other Utilities",
+      enabled: false,
+      componentType: "OtherUtilitiesTheme",
+    },
   ]);
 
   // Component mapping for dynamic rendering
@@ -59,6 +95,12 @@ function App() {
     BorderTheme: BorderTheme,
     EffectsTheme: EffectsTheme,
     FlexGridTheme: FlexGridTheme,
+    FiltersTheme: FiltersTheme,
+    BackdropFiltersTheme: BackdropFiltersTheme,
+    TransitionsTheme: TransitionsTheme,
+    TransformsTheme: TransformsTheme,
+    AnimationsTheme: AnimationsTheme,
+    OtherUtilitiesTheme: OtherUtilitiesTheme,
   };
 
   const mapComponents = () => {
